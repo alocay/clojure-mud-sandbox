@@ -1,0 +1,75 @@
+{
+  "min": -1
+  "max": 1
+  "cells": [
+    [
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 1",
+        "exits": ["n", "s", "e", "w"]
+      },
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 2",
+        "exits": ["n", "s", "e", "w"]
+      },
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 3",
+        "exits": ["n", "s", "e", "w"]
+      }
+    ],
+    [
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 4",
+        "exits": ["n", "s", "e", "w"]
+      },
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 5",
+        "exits": ["n", "s", "e", "w"]
+      },
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 6",
+        "exits": ["n", "s", "e", "w"]
+      }
+    ],
+    [
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 7",
+        "exits": ["n", "s", "e", "w"]
+      },
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 8",
+        "exits": ["n", "s", "e", "w"]
+      },
+      {
+        "title": "The wilderness",
+        "type": "wilderness",
+        "inhabitants": [],
+        "description": "The wilderness 9",
+        "exits": ["n", "s", "e", "w"]
+      }
+    ]
+  ]
+}
