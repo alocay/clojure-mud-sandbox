@@ -6,6 +6,7 @@
 (declare get-minimap-cell)
 (declare get-minimap-row)
 (declare get-minimap)
+(declare get-cell-property)
 (declare display-minimap)
 
 (def empty-mark ".")
@@ -46,11 +47,22 @@
           :let [py (convert-from-coordinate-space posy world)]]
       (get-minimap-row (convert-from-coordinate-space posx world) (get (world :cells) y) (= y py)))))
 
+;; Gets the given property value of the cell corresponding to the player's coordinate position
+(defn get-cell-property [player world prop]
+  (let [x (convert-from-coordinate-space (@player :position_x) world)
+        y (convert-from-coordinate-space (@player :position_y) world)]
+    (get-in world [:cells y x prop])))
+
 ;; Displays the minimap
 (defn display-minimap [player world]
   (let [minimap (get-minimap (@player :position_x) (@player :position_y) world)]
+    (println (str "\n" (get-cell-property player world :title)))
+    (println "--------------------")
     (doseq [row minimap]
-      (println (str/join " " row)))))
+      (println (str/join " " row)))
+    (println "\n--------------------")
+    (println (get-cell-property player world :description))))
+  
 
 
 

@@ -32,7 +32,6 @@
       (= cmd "q") (System/exit 0)
       :else (println "Unknown cmd"))))
 
-;; Fix this world loading (min/max)
 (defn print-flush [msg] (do (println msg) (flush)))
 
 (defn -main []
