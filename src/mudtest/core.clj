@@ -9,6 +9,8 @@
 (declare display-player-info)
 (declare process-input!)
 (declare print-flush)
+(declare generate-mob)
+(declare generate-mobs)
 
 (def player (atom {:position_x 0 :position_y 0 :hp 100 :mana 100}))
 (def world-file (io/resource "world.json"))
@@ -34,10 +36,23 @@
 
 (defn print-flush [msg] (do (println msg) (flush)))
 
+(defn generate-mob []
+  (let [x (rand)]
+    (if (> x 0.5) 
+      {:name "A shiny bug" :description "A bug with a jewel-like carapace" :hp 100}
+      {:name "A cowering dog" :description "A dog hunching over with his tail between his legs" :hp 100})))
+
+(defn generate-mobs [world]
+  (doseq [y (range (count (@world :cells)))
+          x (range (count (get-in @world [:cells y])))]
+    (let [mob (generate-mob)]
+      (swap! world assoc-in [:cells y x :inhabitants] (conj (get-in @world [:cells y x :inhabitants]) mob)))))    
+
 (defn -main []
-  (let [world (world/load-world world-file)]
+  (let [world (atom (world/load-world world-file))]
+    (generate-mobs world)
     (while true
-      (minimap/display-minimap player world)
+      (minimap/display-minimap player @world)
       (display-player-info)
       (get-user-input))))
 

@@ -5,9 +5,13 @@
 (declare load-world)
 
 (defn world-value-reader [key value]
-  (if (= key :type)
-    (keyword value)
-    value))
+  (cond 
+    (= key :type) (keyword value)
+    :else value))
+
+(defn wilsfunc [foo]
+  (for [x [1 2 3]]
+    (println x)))
 
 (defn load-world [file]
    (json/read-str (slurp file) 

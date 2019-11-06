@@ -37,7 +37,7 @@
 (defn get-minimap-row [player_x row is-player-row]
   (for [x (range (count row))]
     (if (and is-player-row (= x player_x))
-      "@"
+      player-mark
       (get-minimap-cell (get row x)))))
 
 ;; Creates the minimap
@@ -53,6 +53,11 @@
         y (convert-from-coordinate-space (@player :position_y) world)]
     (get-in world [:cells y x prop])))
 
+(defn get-cell-inhabitants [player world]
+  (let [inhabs (get-cell-property player world :inhabitants)]
+    (for [inhab inhabs]
+      (str (inhab :name) " - " (inhab :description)))))
+
 ;; Displays the minimap
 (defn display-minimap [player world]
   (let [minimap (get-minimap (@player :position_x) (@player :position_y) world)]
@@ -61,7 +66,12 @@
     (doseq [row minimap]
       (println (str/join " " row)))
     (println "\n--------------------")
-    (println (get-cell-property player world :description))))
+    (println (get-cell-property player world :description))
+    (println "\nYou see:")
+    (println "--------------------")
+    (doseq [inhab (get-cell-inhabitants player world)]
+      (println inhab))
+    (println "")))
   
 
 
